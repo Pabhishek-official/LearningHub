@@ -1,0 +1,323 @@
+.hero-section{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #2563eb, #7c3aeb);
+    color: white;
+    padding: 80px 0;
+}
+.hero-badge{
+    display: inline-block;
+    background: rgba(255, 255, 255, .15);
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    /* backdrop-filter: blur(8px); */
+}
+.hero-title{
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.hero-description{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: .95;
+    margin-bottom: 35px;
+}
+.hero-image{
+    width: 100%;
+    max-width: 520px;
+    animation: floatImage 4s ease-in-out infinite;
+}
+.hero-stats{
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.hero-stats h3{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.hero-stats p{
+    margin: 0;
+    opacity: .9;
+}
+@keyframes floatImage{
+    0%{transform:translate(0);}
+    50%{transform:translate(-15px);}
+    100%{transform:translate(0);}
+}
+@media(max-width:992px){
+    .hero-title{
+        font-size: 2.6rem;
+    }
+    .hero-section{
+        text-align: center;
+    }
+    .hero-buttons{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .hero-stats{
+        justify-content: center;
+    }
+}
+.feature-section{
+    background: #f8fafc;
+}
+.feature-card{
+    background: white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    transition: .3s;
+    height: 100%;
+}
+.feature-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, .18);
+}
+.feature-icon{
+    font-size: 55px;
+    color: #2563eb;
+    margin-bottom: 20px;
+}
+.feature-card h4{
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.feature-card p{
+    color: #6b7280;
+    line-height: 1.7;
+}
+.featured-courses{
+    background: white;
+}
+.course-card{
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
+    transition: 3s;
+    height: 100%;
+}
+.course-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(37, 99, 235, .18);
+}
+.course-image{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.course-body{
+    padding: 25px;
+}
+.course-body h4{
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.course-body p{
+    color: #6b7280;
+    min-height: 70px;
+    line-height: 1.6;
+}
+.latest-notes{
+    background: #f8fafc;
+}
+.note-card{
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0,0,0,.08);
+    transition: 3s;
+    height: 100%;
+}
+.note-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(37,99,235,.18);
+}
+.note-image{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.note-body{
+    padding: 25px;
+    text-align: center;
+}
+.note-body h4{
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.statistics-section{
+    background: linear-gradient(135deg, #2563eb, #7c3aeb);
+    color: #fff;
+}
+.stat-card{
+    background: rgba(255,255,255,.12);
+    border-radius: 20px;
+    padding: 35px 20px;
+    /* backdrop-filter: blur(10px); */
+    transition: .3s;
+}
+.stat-card:hover{
+    transform: translateY(-8px);
+    background: rgba(255,255,255,.2);
+}
+.stat-icon{
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.stat-card h2{
+    font-weight: 800;
+}
+.journey-section{
+    background: #ffffff;
+}
+.journey-card{
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    transition: .3s;
+    height: 100%;
+}
+.journey-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(37,99,235,.18);
+}
+.journey-number{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 20px;
+}
+.journey-icon{
+    font-size: 50px;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+.journey-card h4{
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.journey-card p{
+    color: #6b7280;
+    line-height: 1.7;
+}
+.testimonial-section{
+    background: #f8fafc;
+}
+.testimonial-card{
+    background: white;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,.08);
+    transition: .3s;
+    height: 100%;
+}
+.testimonial-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(37,99,235,.18);
+}
+.testimonial-image{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #2563eb;
+}
+.testimonial-card small{
+    color: #6b7280;
+}
+.testimonial-card p{
+    color: #555;
+    line-height: 1.7;
+}
+.faq-section{
+    background: #ffffff;
+}
+.accordion-item{
+    border: none;
+    margin-bottom: 18px;
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+.accordion-button{
+    font-weight: 600;
+}
+.accordion-button:not(.collapsed){
+    background: #2563eb;
+    color: white;
+}
+.cta-section{
+    padding: 90px 0;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+}
+.cta-box{
+    text-align: center;
+    color: white;
+    background: rgba(255,255,255,.12);
+    /* backdrop-filter: blur(10px); */
+    border-radius: 30px;
+    padding: 70px 40px;
+}
+.cta-badge{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.18);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+.cta-box h2{
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+.cta-box p{
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    opacity: .95;
+}
+.cta-buttons{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cta-buttons .btn{
+    min-width: 200px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+@media(max-width:768px){
+    .cta-box{
+        padding: 50px 25px;
+    }
+    .cta-box h2{
+        font-size: 2.2rem;
+    }
+}

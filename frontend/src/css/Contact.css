@@ -1,0 +1,126 @@
+.contact-header{
+    text-align: center;
+    padding: 70px 30px;
+    margin-bottom: 60px;
+    border-radius: 25px;
+    background: linear-gradient(135deg,#eff6ff,#f5f3ff);
+}
+.contact-icon{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#2563eb,#7c3aeb);
+    color: #fff;
+    font-size: 2.8rem;
+    box-shadow:0 15px 35px rgba(37,99,235,.25);
+}
+.contact-header h1{
+    margin-top: 25px;
+    font-weight: 700;
+    color: #1f2937;
+}
+.contact-subtitle{
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: #6b7280;
+    line-height: 1.8;
+}
+/* Contact Information */
+.contact-info-card{
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    height: 100%;
+}
+.contact-item{
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+.contact-item:last-child{
+    margin-bottom: 0;
+}
+.contact-item i{
+    font-size: 1.7rem;
+    color: #2563eb;
+}
+.contact-item h6{
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.contact-item p{
+    margin: 0;
+    color: #6b7280;
+}
+/* contact form */
+.card{
+    border: none;
+    border-radius:20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+.card-body{
+    padding: 35px;
+}
+.form-control{
+    border-radius: 12px;
+    padding: 12px;
+}
+.form-control:focus{
+    border-color: #2563eb;
+    box-shadow: 0 0 .2rem rgba(37,99,235,.15);
+}
+.btn-primary{
+    border-radius: 30px;
+    padding:10px 30px;
+}
+/* FAQ */
+.accordion-item{
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+.accordion-button{
+    font-weight: 600;
+}
+.accordion-button:not(.collapsed){
+    background: #2563eb;
+    color: #fff;
+}
+/* Contact CTA */
+.contact-cta{
+    margin-top: 70px;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+}
+.contact-cta .cta-box{
+    text-align: center;
+    color: #fff;
+    padding: 80px 20px;
+}
+.contact-cta .cta-box h2{
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.contact-cta .cta-box p{
+    max-width: 700px;
+    margin: 0 auto 35px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+.contact-cta .btn{
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: .3s;
+}
+.contact-cta .btn:hover{
+    transform: translateY(-3px);
+}

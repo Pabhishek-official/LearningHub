@@ -1,0 +1,106 @@
+.register-page{
+    min-height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#EEF4FF,#F8FAFC,#F3E8FF);
+    padding: 60px 20px;
+}
+.register-icon{
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+    font-size: 36px;
+    box-shadow: 0 10px 25px rgba(37,99,235,.25);
+}
+.register-card .input-group{
+    margin-bottom: 18px;
+}
+.register-card .input-group-text{
+    background: #f8fafc;
+    border: 1px solid #dee2e6;
+}
+.register-card .form-control{
+    border-left: none;
+}
+.register-card .form-control:focus{
+    box-shadow: none;
+    border-color: #86b7fe;
+}
+.password-toggle{
+    border-left: none;
+}
+
+.register-card {
+    width: 460px;
+    max-width: 95%;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.15);
+    animation: fade .6s;
+}
+.register-card:hover{
+    transform: translateY(-5px);
+    transition: .3s;
+}
+
+.register-card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: gray;
+
+}
+
+.register-card p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: gray;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+}
+.register-btn{
+    height: 48px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.login-link{
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-link:hover{
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media(max-width:576px){
+    .register-card{
+        width: 95%;
+        padding: 25px;
+    }
+    .register-icon{
+        width: 65px;
+        height: 65px;
+        font-size: 30px;
+    }
+}
