@@ -12,8 +12,8 @@ function Statistics() {
     const fetchStats = async () => {
         try {
             const [courseRes, noteRes] = await Promise.all([
-                axios.get("http://localhost:5000/api/courses"),
-                axios.get("http://localhost:5000/api/notes"),
+                axios.get("https://learninghub-backend-ly49.onrender.com/api/courses"),
+                axios.get("https://learninghub-backend-ly49.onrender.com/api/notes"),
             ]);
             setStats({
                 courses: courseRes.data.courses.length,

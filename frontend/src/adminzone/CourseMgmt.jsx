@@ -27,7 +27,7 @@ function CourseMgmt() {
             banner: null
         });
 
-        setEditPreview(`http://localhost:5000/${course.banner}`);
+        setEditPreview(`https://learninghub-backend-ly49.onrender.com/${course.banner}`);
     };
 
     const handleEditChange = (e) => {
@@ -172,7 +172,7 @@ function CourseMgmt() {
                                     {/* Banner */}
                                     <div className="course-image">
                                         <img
-                                            src={`http://localhost:5000/${course.banner}`}
+                                            src={`https://learninghub-backend-ly49.onrender.com/${course.banner}`}
                                             alt={course.courseName}
                                         />
                                     </div>

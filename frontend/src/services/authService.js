@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/auth";
+const API = "https://learninghub-backend-ly49.onrender.com/api/auth";
 export const registerUser = (userData) => {
     return axios.post(`${API}/register`, userData);
 };

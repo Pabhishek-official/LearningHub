@@ -9,7 +9,7 @@ function FeaturedCourses() {
     }, []);
     const fetchCourses = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/courses");
+            const res = await axios.get("https://learninghub-backend-ly49.onrender.com/api/courses");
             setCourses(res.data.courses);
         } catch (error) {
             console.log(error);
@@ -29,7 +29,7 @@ function FeaturedCourses() {
                         <div className="col-lg-4 col-md-6" key={course._id}>
                             <div className="course-card">
                                 <img
-                                    src={`http://localhost:5000/${course.banner}`}
+                                    src={`https://learninghub-backend-ly49.onrender.com/${course.banner}`}
                                     alt={course.courseName}
                                     className="course-image" />
                                 <div className="course-body">

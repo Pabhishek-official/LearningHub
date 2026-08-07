@@ -8,7 +8,7 @@ function LatestNotes() {
     }, []);
     const fetchNotes = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/notes");
+            const res = await axios.get("https://learninghub-backend-ly49.onrender.com/api/notes");
             setNotes(res.data.notes);
         } catch (error) {
             console.log(error);
@@ -28,13 +28,13 @@ function LatestNotes() {
                         <div className="col-lg-4 col-md-6" key={note._id}>
                             <div className="note-card">
                                 <img
-                                    src={`http://localhost:5000/${note.banner}`}
+                                    src={`https://learninghub-backend-ly49.onrender.com/${note.banner}`}
                                     alt={note.topicName}
                                     className="note-image" />
                                 <div className="note-body">
                                     <h4>{note.topicName}</h4>
                                     <a
-                                        href={`http://localhost:5000/${note.pdf}`}
+                                        href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="btn btn-success w-100" >

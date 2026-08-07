@@ -25,7 +25,7 @@ function Contact() {
         console.log("submit clicked");
 
         try {
-            const res = await axios.post("http://localhost:5000/api/Contact", formData);
+            const res = await axios.post("https://learninghub-backend-ly49.onrender.com/api/Contact", formData);
 
             alert(res.data.message);
 

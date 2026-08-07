@@ -13,7 +13,7 @@ function Notes() {
     const fetchNotes = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("http://localhost:5000/api/notes");
+            const response = await axios.get("https://learninghub-backend-ly49.onrender.com/api/notes");
             setNotes(response.data.notes);
         } catch (error) {
             console.log(error);
@@ -111,7 +111,7 @@ function Notes() {
                         <div className="card note-card h-100 position-relative">
                             <span className="badge bg-danger position-absolute m-3">Popular</span>
                             <img
-                                src={`http://localhost:5000/${note.banner}`}
+                                src={`https://learninghub-backend-ly49.onrender.com/${note.banner}`}
                                 className="card-img-top note-image"
                                 alt={note.topicName}
                                 style={{
@@ -136,7 +136,7 @@ function Notes() {
                                 </div>
                                 <div className="d-flex gap-2 mt-3">
                                     <a
-                                        href={`http://localhost:5000/${note.pdf}`}
+                                        href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="btn btn-outline-primary flex-fill">
@@ -144,7 +144,7 @@ function Notes() {
                                         View
                                     </a>
                                     <a
-                                        href={`http://localhost:5000/${note.pdf}`}
+                                        href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
                                         download
                                         className="btn btn-primary flex-fill">
                                         <i className="bi bi-download me-2"></i>

@@ -7,7 +7,7 @@ function ContactMgmt() {
 
     const [getContacts, setContacts] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/api/contacts")
+        axios.get("https://learninghub-backend-ly49.onrender.com/api/contacts")
             .then((res) => {
                 setContacts(res.data);
             })

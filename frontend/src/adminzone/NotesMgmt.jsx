@@ -26,7 +26,7 @@ function NotesMgmt() {
             pdf: null
         });
 
-        setEditPreview(`http://localhost:5000/${note.banner}`);
+        setEditPreview(`https://learninghub-backend-ly49.onrender.com/${note.banner}`);
     };
 
     const handleEditChange = (e) => {
@@ -156,7 +156,7 @@ function NotesMgmt() {
                                 <div
                                     className="card shadow h-100">
                                     <img
-                                        src={`http://localhost:5000/${note.banner}`}
+                                        src={`https://learninghub-backend-ly49.onrender.com/${note.banner}`}
                                         className="card-img-top"
                                         alt={note.topicName}
                                         style={{
@@ -170,7 +170,7 @@ function NotesMgmt() {
                                         <h5>{note.topicName}</h5>
                                         <div className="d-flex gap-2 mt-3">
                                             <a
-                                                href={`http://localhost:5000/${note.pdf}`}
+                                                href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="btn btn-success flex-grow-1"
