@@ -2,11 +2,12 @@ const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose');
 const cors = require("cors");
+require("dotenv").config();
 const authRoutes = require("./routes/authRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const notesRoutes = require("./routes/notesRoutes");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -14,7 +15,7 @@ app.use("/uploads", express.static("uploads"));
 
 
 //connect with local mongodb
-mongoose.connect("mongodb://127.0.0.1:27017/onlinedb").then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("Mongodb Connected");
 }).catch((err) => {
     console.log("Connection Error :", err);
