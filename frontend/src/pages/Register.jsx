@@ -133,7 +133,7 @@ function Register() {
                             type="button"
                             className="btn btn-outline-secondary password-toggle"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                            <i className={showConfirmPassword ? "bi bi-eye-shash-fill" : "bi bi-eye-fill"}></i>
+                            <i className={showConfirmPassword ? "bi bi-eye-slash-fill" : "bi bi-eye-fill"}></i>
                         </button>
                     </div>
                     <button
