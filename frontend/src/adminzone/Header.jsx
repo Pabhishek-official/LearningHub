@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { logoutUser } from "../utils/auth";
 import { AuthContext } from "../context/AuthContext";
 
@@ -29,22 +29,22 @@ function Header() {
                                     <a className="nav-link active" aria-current="page" href="/dashboard" style={{ color: "white" }}>Dashboard</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/contactmgmt" style={{ color: "white" }}>Contact Management</a>
+                                    <Link to="/AddCourse" className="nav-link" style={{color: "white"}}>Contact_Mgmt</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/addnotes" style={{ color: "white" }}>Add Notes</a>
+                                    <Link className="nav-link" to="/AddNotes" style={{ color: "white" }}>Add Notes</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/notesmgmt" style={{ color: "white" }}>Notes Management</a>
+                                    <Link className="nav-link" to="/NotesMgmt" style={{ color: "white" }}>Notes Management</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/addcourse" style={{ color: "white" }}>Add Course</a>
+                                    <Link className="nav-link" to="/AddCourse" style={{ color: "white" }}>Add Course</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/coursemgmt" style={{ color: "white" }}>Course Management</a>
+                                    <Link className="nav-link" to="/CourseMgmt" style={{ color: "white" }}>Course Management</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/changepassword" style={{ color: "white" }}>Change Password</a>
+                                    <Link className="nav-link" to="/ChangePassword" style={{ color: "white" }}>Change Password</Link>
                                 </li>
                                 <li className="nav-item">
                                     <button className="nav-link" onClick={handleLogout} style={{
