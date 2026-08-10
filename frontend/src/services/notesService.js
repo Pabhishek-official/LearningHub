@@ -1,29 +1,22 @@
 import axios from "axios";
 
-const API = "https://learninghub-backend-ly49.onrender.com/api/notes";
+const API = `${import.meta.env.VITE_API_URL}/notes`;
 
+//add notes
 export const addNotes = (formData) => {
-    return axios.post(`${API}/add`,
-        formData, {
-        headers: {
-            "Content-Type": "multipart/formData",
-        },
-    });
+    return axios.post(`${API}/add`, formData);
 };
 
+//get notes
 export const getNotes = () => {
     return axios.get(API);
 };
 
+//Delete notes
 export const deleteNotes = (id) => {
     return axios.delete(`${API}/${id}`);
 };
 
 export const updateNotes = (id, formData) => {
-    return axios.put(`${API}/${id}`,
-        formData, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-    });
+    return axios.put(`${API}/${id}`, formData);
 };

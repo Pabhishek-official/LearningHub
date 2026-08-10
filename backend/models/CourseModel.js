@@ -10,6 +10,10 @@ const courseSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        cloudinaryPublicId: {
+            type: String
+        },
+        
         description: {
             type: String,
             required: true

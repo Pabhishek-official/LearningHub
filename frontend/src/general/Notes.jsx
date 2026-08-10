@@ -7,20 +7,36 @@ function Notes() {
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
 
+    const API = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         fetchNotes();
     }, []);
     const fetchNotes = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("https://learninghub-backend-ly49.onrender.com/api/notes");
-            setNotes(response.data.notes);
+            const response = await axios.get(`${API}/notes`);
+            setNotes(response.data.notes || []);
         } catch (error) {
-            console.log(error);
+            console.log("FETCH NOTES ERROR:", error);
         } finally {
             setLoading(false);
         }
     };
+
+    //Handle both Coudinary URLs and old uploads/ paths
+    const getFileUrl = (file) => {
+        if(!file) return "";
+
+        //Cloudinary URL
+        if(file.startsWith("http")) {
+            return file;
+        }
+
+        //Old local upload path
+        return `${API.replace("/api", "")}/${file}`;
+    };
+
     //Loading spinner
     if (loading) {
         return (
@@ -36,6 +52,10 @@ function Notes() {
             </div>
         )
     }
+
+    const filteredNotes = notes.filter((note) =>
+        note.topicName?.toLowerCase().includes(search.toLowerCase())
+    );
     return (
         <>
         <div className="container py-5">
@@ -110,8 +130,9 @@ function Notes() {
                     <div className="col-md-4" key={note._id}>
                         <div className="card note-card h-100 position-relative">
                             <span className="badge bg-danger position-absolute m-3">Popular</span>
+                            {/* Banner */}
                             <img
-                                src={`https://learninghub-backend-ly49.onrender.com/${note.banner}`}
+                                src={getFileUrl(note.banner)}
                                 className="card-img-top note-image"
                                 alt={note.topicName}
                                 style={{
@@ -135,16 +156,18 @@ function Notes() {
                                     </span>
                                 </div>
                                 <div className="d-flex gap-2 mt-3">
+                                    {/* View */}
                                     <a
-                                        href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
+                                        href={getFileUrl(note.pdf)}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="btn btn-outline-primary flex-fill">
                                         <i className="bi bi-eye-fill me-2"></i>
                                         View
                                     </a>
+                                    {/* Download */}
                                     <a
-                                        href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
+                                        href={getFileUrl(note.pdf)}
                                         download
                                         className="btn btn-primary flex-fill">
                                         <i className="bi bi-download me-2"></i>

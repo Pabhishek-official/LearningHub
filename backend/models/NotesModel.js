@@ -10,9 +10,15 @@ const notesSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        bannerPublicId: {
+            type: String
+        },
         pdf: {
             type: String,
             required: true
+        },
+        pdfPublicId: {
+            type: String
         }
     },
     {

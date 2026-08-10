@@ -16,6 +16,18 @@ function NotesMgmt() {
 
     const [editPreview, setEditPreview] = useState(null);
     const [updating, setUpdating] = useState(false);
+    const API = import.meta.env.VITE_API_URL;
+
+    const getFileUrl = (filePath) => {
+        if(!filePath) return "";
+
+        //Cloudinary URL
+        if(filePath.startsWith("http")) {
+            return filePath;
+        }
+        //Old local upload path
+        return `${API.replace("/api", "")}/${filePath}`;
+    };
 
     const handleEdit = (note) => {
         setEditingNote(note);
@@ -26,7 +38,7 @@ function NotesMgmt() {
             pdf: null
         });
 
-        setEditPreview(`https://learninghub-backend-ly49.onrender.com/${note.banner}`);
+        setEditPreview(getFileUrl(note.banner));
     };
 
     const handleEditChange = (e) => {
@@ -156,7 +168,7 @@ function NotesMgmt() {
                                 <div
                                     className="card shadow h-100">
                                     <img
-                                        src={`https://learninghub-backend-ly49.onrender.com/${note.banner}`}
+                                        src={getFileUrl(note.banner)}
                                         className="card-img-top"
                                         alt={note.topicName}
                                         style={{
@@ -170,7 +182,7 @@ function NotesMgmt() {
                                         <h5>{note.topicName}</h5>
                                         <div className="d-flex gap-2 mt-3">
                                             <a
-                                                href={`https://learninghub-backend-ly49.onrender.com/${note.pdf}`}
+                                                href={getFileUrl(note.pdf)}
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="btn btn-success flex-grow-1"
@@ -193,7 +205,7 @@ function NotesMgmt() {
                                         className="modal fade show d-block"
                                         tabIndex="-1"
                                         style={{
-                                            backgroundColor: "rgba(0,0,0,0.5"
+                                            backgroundColor: "rgba(0,0,0,0.5)"
                                         }}
                                     >
                                         <div

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "https://learninghub-backend-ly49.onrender.com/api/courses";
+const API = `${import.meta.env.VITE_API_URL}/courses`;
 
 export const addCourse = (formData) => {
     return axios.post(`${API}/add`, formData, {

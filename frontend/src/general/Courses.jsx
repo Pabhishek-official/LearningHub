@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getCourses } from "../services/courseService";
 import "../css/Courses.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,13 +16,17 @@ function Courses() {
         });
         fetchCourses();
     }, []);
+    
     const fetchCourses = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("https://learninghub-backend-ly49.onrender.com/api/courses");
-            setCourses(response.data.courses);
+            const response = await getCourses();
+            
+            setCourses(response.data.courses || []);
+
         } catch (error) {
-            console.log(error);
+            console.log("FETCH COURSES ERROR", error);
+
         } finally {
             setLoading(false);
         }
@@ -115,7 +119,7 @@ function Courses() {
                             <div className="col-lg-4 col-md-6" key={course._id} data-aos="fade-up">
                                 <div className="card shadow h-100 course-card">
                                     <img
-                                        src={`https://learninghub-backend-ly49.onrender.com/${course.banner}`}
+                                        src={course.banner}
                                         className="card-img-top"
                                         alt={course.courseName} />
                                     <div className="card-body">

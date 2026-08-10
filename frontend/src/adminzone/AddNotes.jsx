@@ -177,7 +177,7 @@ function AddNotes() {
                             {loading ? (
                                 <>
                                     <span className="spinner-border spinner-border-sm me-2"></span>
-                                    Uloading...
+                                    Uploading...
                                 </>
                             ) : ("Add Notes")}
                         </button>

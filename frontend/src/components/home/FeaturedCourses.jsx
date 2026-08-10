@@ -4,16 +4,35 @@ import { Link } from "react-router-dom";
 import "../../css/Home.css";
 function FeaturedCourses() {
     const [courses, setCourses] = useState([]);
+
+    const API = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         fetchCourses();
     }, []);
+
     const fetchCourses = async () => {
         try {
-            const res = await axios.get("https://learninghub-backend-ly49.onrender.com/api/courses");
-            setCourses(res.data.courses);
+            const res = await fetch(`${API}/courses`);
+            const data = await res.json();
+
+            setCourses(data.courses || []);
+
         } catch (error) {
-            console.log(error);
+            console.log("FETCH FEATURED COURSES ERROR:", error);
         }
+    };
+    //Handle both coudinary urls and old uploads/ paths
+    const getBannerUrl = (banner) => {
+        if(!banner) return "";
+
+        //Cloudinary URL
+        if(banner.startsWith("http")) {
+            return banner;
+        }
+
+        //Old local upload path
+        return `${API.replace("/api", "")}/${banner}`;
     };
     return (
         <section className="featured-courses py-5">
@@ -29,7 +48,7 @@ function FeaturedCourses() {
                         <div className="col-lg-4 col-md-6" key={course._id}>
                             <div className="course-card">
                                 <img
-                                    src={`https://learninghub-backend-ly49.onrender.com/${course.banner}`}
+                                    src={getBannerUrl(course.banner)}
                                     alt={course.courseName}
                                     className="course-image" />
                                 <div className="course-body">
