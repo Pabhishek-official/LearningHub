@@ -19,10 +19,10 @@ function NotesMgmt() {
     const API = import.meta.env.VITE_API_URL;
 
     const getFileUrl = (filePath) => {
-        if(!filePath) return "";
+        if (!filePath) return "";
 
         //Cloudinary URL
-        if(filePath.startsWith("http")) {
+        if (filePath.startsWith("http")) {
             return filePath;
         }
         //Old local upload path
@@ -135,8 +135,9 @@ function NotesMgmt() {
 
     const fetchNotes = async () => {
         try {
+            setLoading(true);
             const response = await getNotes();
-            setNotes(response.data.notes);
+            setNotes(response.data.notes || []);
         } catch (error) {
             console.log(error);
             toast.error("Failed to load notes");
@@ -151,170 +152,203 @@ function NotesMgmt() {
     return (
         <div className="notesmgmt-page">
             <ToastContainer position="top-right" />
-            <div className="container">
-                <h2 className="mb-5">Notes Management</h2>
-                {loading ? (
-                    <div className="text-center mt-5">
-                        <div className="spinner-border text-primary"></div>
+            <div className="container py-5">
+                {/* Header */}
+                <div className="notesmgmt-header">
+                    <div>
+                        <h2>
+                            <i className="bi bi-journal-text me-2"></i>
+                            Notes Management</h2>
+                            <p>
+                                Manage all study notes from the admin panel.
+                            </p>
                     </div>
-                ) : notes.length === 0 ? (
-                    <h4 className="text-center text-primary">No Notes Availabel</h4>
-                ) : (
-                    <div className="row">
+                    <div className="notes-count">
+                        <i className="bi bi-file-earmark-text me-2"></i>
+                        Total Notes:
+                        <strong>{notes.length}</strong>
+                    </div>
+                </div>
+                {/* Loading */}
+                {loading && (
+                    <div className="text-center my-5">
+                        <div className="spinner-border text-primary"
+                        role="status"></div>
+                        <p className="mt-3">Loading notes...</p>
+                    </div>
+                )}
+                {!loading && notes.length === 0 && (
+                    <div className="empty-notes">
+                        <i className="bi bi-journal-x"></i>
+                        <h4>No Notes Found</h4>
+                        <p>You haven't added any notes yet.</p>
+                    </div>
+                )}
+                {/* Notes Cards */}
+                {!loading && notes.length > 0 && (
+                    <div className="row g-4">
                         {notes.map((note) => (
-                            <div className="col-md-6 col-lg-4 mb-4"
-                                key={note._id}
-                            >
-                                <div
-                                    className="card shadow h-100">
-                                    <img
+                            <div className="col-12 col-md-6 col-lg-4"
+                            key={note._id}>
+                                <div className="notes-card">
+                                    {/* Banner */}
+                                    <div className="notes-image">
+                                        <img
                                         src={getFileUrl(note.banner)}
-                                        className="card-img-top"
-                                        alt={note.topicName}
-                                        style={{
-                                            height: "220px",
-                                            objectFit: "cover"
-                                        }}
-                                    />
-                                    <div
-                                        className="card-body"
-                                    >
-                                        <h5>{note.topicName}</h5>
-                                        <div className="d-flex gap-2 mt-3">
-                                            <a
-                                                href={getFileUrl(note.pdf)}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="btn btn-success flex-grow-1"
-                                            >View PDF</a>
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary"
-                                                onClick={() => handleEdit(note)}
-                                            >Edit</button>
-                                            <button
-                                                type="button"
-                                                className="btn btn-danger"
-                                                onClick={() => handleDelete(note._id)}
-                                            >Delete</button>
-                                        </div>
+                                        alt={note.topicName} />
                                     </div>
+                                    {/* Content */}
+                                    <div className="notes-content">
+                                        <h4>
+                                            <i className="bi bi-file-text me-2"></i>
+                                            {note.topicName}
+                                        </h4>
+                                    </div>
+                                    {/* Action */}
+                                    <div className="notes-actions">
+                                        <a
+                                        href={getFileUrl(note.pdf)}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="btn btn-success">
+                                            <i className="bi bi-file-earmark-pdf me-1"></i>
+                                            View PDF
+                                        </a>
+                                        <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick={() =>
+                                            handleEdit(note)
+                                        }>
+                                            <i className="bi bi-pencil-square me-1"></i>
+                                            Edit
+                                        </button>
+                                        <button
+                                        type="button"
+                                        className="btn btn-danger"
+                                        onClick={() =>
+                                            handleDelete(note._id)
+                                        }>
+                                            <i className="bi bi-trash3 me-1"></i>
+                                            Delete
+                                        </button>
+                                    </div>
+
                                 </div>
-                                {editingNote && (
-                                    <div
-                                        className="modal fade show d-block"
-                                        tabIndex="-1"
-                                        style={{
-                                            backgroundColor: "rgba(0,0,0,0.5)"
-                                        }}
-                                    >
-                                        <div
-                                            className="modal-dialog modal-dialog-centered">
-                                            <div
-                                                className="modal-content rounded-4"
-                                            >
-                                                <div
-                                                    className="modal-header"
-                                                >
-                                                    <h5
-                                                        className="modal-title">Edit Notes</h5>
-                                                    <button
-                                                        type="button"
-                                                        className="btn-close"
-                                                        onClick={() => {
-                                                            setEditingNote(null);
-                                                            setEditPreview(null);
-                                                        }}></button>
-                                                </div>
-                                                <form onSubmit={handleUpdate}>
-                                                    <div className="modal-body">
-                                                        {/* Topic Name */}
-                                                        <div className="mb-3">
-                                                            <label
-                                                                className="form-label fw-bold">Topic Name</label>
-                                                            <input
-                                                                type="text"
-                                                                name="topicName"
-                                                                className="form-control"
-                                                                value={editForm.topicName}
-                                                                onChange={handleEditChange} />
-                                                        </div>
-                                                        {/* Banner */}
-                                                        <div className="mb-3">
-                                                            <label className="form-label fw-bold">Replace Banner</label>
-                                                            <input
-                                                                type="file"
-                                                                className="form-control"
-                                                                accept="image/png, image/jpeg, image/jpg, image/webp"
-                                                                onChange={handleEditBanner} />
-                                                        </div>
-                                                        {/* Banner Preview */}
-                                                        {editPreview && (
-                                                            <div
-                                                                className="mb-3">
-                                                                <img
-                                                                    src={editPreview}
-                                                                    alt="Banner preview"
-                                                                    style={{
-                                                                        width: "100%",
-                                                                        height: "200px",
-                                                                        objectFit: "cover",
-                                                                        borderRadius: "12px"
-                                                                    }} />
-                                                            </div>
-                                                        )}
-                                                        {/* PDF */}
-                                                        <div className="mb-3">
-                                                            <label className="form-label fw-bold">Replace PDF</label>
-                                                            <input
-                                                                type="file"
-                                                                className="form-control"
-                                                                accept=".pdf,application/pdf"
-                                                                onChange={handleEditPdf}
-                                                            />
-                                                            {editForm.pdf && (
-                                                                <small
-                                                                    className="text-success d-block mt-2"
-                                                                >
-                                                                    New PDF: {""}{editForm.pdf.name}
-                                                                </small>
-                                                            )}
-                                                        </div>
-                                                        <div
-                                                            className="alert alert-info">Leave the banner of PDF empty to keep the existing file.
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        className="modal-footer">
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-secondary"
-                                                            onClick={() => {
-                                                                setEditingNote(null);
-                                                                setEditPreview(null);
-                                                            }}
-                                                            disabled={updating}>Cancel</button>
-                                                        <button
-                                                            type="submit"
-                                                            className="btn btn-primary"
-                                                            disabled={updating}>
-                                                            {updating ? (
-                                                                <>
-                                                                    <span
-                                                                        className="spinner-border spinner-border-sm me-2"></span>
-                                                                    Updating...
-                                                                </>
-                                                            ) : ("Save Changes")}
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         ))}
-
+                    </div>
+                )}
+                {/* Edit Modal */}
+                {editingNote && (
+                    <div className="modal fade show d-block"
+                    tabIndex="-1"
+                    style={{
+                        backgroundColor: "rgba(0,0,0,0.5)"
+                    }}>
+                         <div
+                className="modal-dialog modal-dialog-centered
+                modal-dialog-scrollable">
+                    <div className="modal-content rounded-4">
+                        {/* Modal Header */}
+                        <div className="modal-header">
+                            <h5 className="modal-title">
+                                <i className="bi bi-pencil-square me-2"></i>
+                                Edit Notes
+                            </h5>
+                            <button
+                            type="button"
+                            className="btn-close"
+                            onClick={() => {
+                                setEditingNote(null);
+                                setEditPreview(null);
+                            }}></button>
+                        </div>
+                        <form onSubmit={handleUpdate}>
+                            <div className="modal-body">
+                                {/* Topic */}
+                                <div className="mb-3">
+                                    <label className="form-label fw-bold">Topic Name</label>
+                                    <input
+                                    type="text"
+                                    name="topicName"
+                                    className="form-control"
+                                    value={editForm.topicName}
+                                    onChange={handleEditChange} />
+                                </div>
+                                {/* Banner */}
+                                <div className="mb-3">
+                                    <label className="form-label fw-bold">Replace Banner</label>
+                                    <input
+                                    type="file"
+                                    className="form-control"
+                                    accept="image/png, image/jpeg, image/jpg, image/webp"
+                                    onChange={handleEditBanner} />
+                                </div>
+                                {/* Preview */}
+                                {editPreview && (
+                                    <div className="edit-preview mb-3">
+                                        <img
+                                        src={editPreview}
+                                        alt="Banner preview" />
+                                    </div>
+                                )}
+                                {/* PDF */}
+                                <div className="mb-3">
+                                    <label className="form-label fw-bold">Replace PDF</label>
+                                    <input
+                                    type="file"
+                                    className="form-control"
+                                    accept=".pdf,application/pdf"
+                                    onChange={handleEditPdf} />
+                                    {editForm.pdf && (
+                                        <small className="text-success d-block mt-2">
+                                            <i className="bi bi-file-earmark-pdf me-1"></i>
+                                            New PDF:
+                                            {" "}
+                                            {editForm.pdf.name}
+                                        </small>
+                                    )}
+                                </div>
+                                <div className="alert alert-info">
+                                    <i className="bi bi-info-circle me-2"></i>
+                                    Leave the Banner or PDF empty to keep the existing file.
+                                </div>
+                            </div>
+                            {/* Modal Footer */}
+                            <div className="modal-footer">
+                                <button
+                                type="button"
+                                className="btn btn-secondary"
+                                onClick={() => {
+                                    setEditingNote(null);
+                                    setEditPreview(null);
+                                }}
+                                disabled={updating}>
+                                    <i className="bi bi-x-lg me-1"></i>
+                                    Cancel
+                                </button>
+                                <button
+                                type="submit"
+                                className="btn btn-primary"
+                                disabled={updating}>
+                                    {updating ? (
+                                        <>
+                                        <span className="spinner-border spinner-border-sm me-2"></span>
+                                        Updating...
+                                        </>
+                                    ) : (
+                                        <>
+                                        <i className="bi bi-check-lg me-1"></i>
+                                        Save Changes
+                                        </>
+                                    )
+                                }
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                     </div>
                 )}
             </div>

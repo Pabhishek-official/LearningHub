@@ -27,8 +27,13 @@
     padding: 12px 20px;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    white-space: nowrap;
 }
-
+.course-count strong{
+    margin-left: 6px;
+    color: #2563eb;
+}
+/* Course Card */
 .course-card{
     height: 100%;
     background: white;
@@ -69,6 +74,12 @@
 .course-content p{
     color: #64748b;
     min-height: 70px;
+    line-height: 1.6;
+    /* Prevent very long description from making cards uneven */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: verical;
+    overflow: hidden;
 }
 
 .course-actions{
@@ -89,10 +100,81 @@
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
 }
+/* Tablet */
 
 @media (max-width: 768px){
     .coursemgmt-header{
         flex-direction: column;
         align-items: flex-start;
+        margin-bottom: 25px;
+    }
+    .course-count{
+        width: 100%;
+        border-radius: 15px;
+    }
+    .course-image{
+        height: 210px;
+    }
+    .course-content{
+        padding: 18px;
+    }
+}
+/* Mobile */
+@media (max-width: 576px){
+    .coursemgmt-page{
+        overflow-x: hidden;
+    }
+    .coursemgmt-header h2{
+        font-size: 24px;
+    }
+    .coursemgmt-header p{
+        font-size: 14px;
+    }
+    .course-count{
+        padding: 11px 15px;
+        font-size: 14px;
+    }
+    .course-count strong{
+        font-size: 17px;
+    }
+    .course-image{
+        height: 190px;
+    }
+    .course-content{
+        padding: 16px;
+    }
+    .course-content h4{
+        font-size: 19px;
+    }
+    .course-content p{
+        font-size: 14px;
+        min-height: auto;
+    }
+    .course-actions{
+        gap: 8px;
+    }
+    .course-actions button{
+        font-size: 14px;
+        padding: 9px 10px;
+    }
+    .empty-course{
+        padding: 45px 15px;
+    }
+    /* Edit modal */
+    .modal-dialog{
+        margin: 10px;
+    }
+    .modal-content{
+        border-radius: 16px !important;
+    }
+    .modal-body{
+        padding: 18px;
+    }
+    .modal-footer{
+        padding: 12px;
+        gap: 8px;
+    }
+    .modal-footer button{
+        flex: 1;
     }
 }

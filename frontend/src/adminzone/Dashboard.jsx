@@ -1,42 +1,73 @@
 import React from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "../utils/auth";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import "../css/Dashboard.css";
 
 
 function Dashboard() {
+    const navigate = useNavigate();
+    const { setLoggedIn, setUser } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logoutUser();
+        setLoggedIn(false);
+        setUser(null);
+        navigate("/login");
+    };
     return (
-        <div>
-            <div className='container-fluid'>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                    <div className='row'>
-                        <div className='col-3' style={{ minHeight: "200px", background: "orangered", margin: "4%", padding:'2%'}}>
-                            <span className='fa fa-home' style={{fontSize:"100px", color:"white", lineHeight:'2'}}></span><br/>
-                            <span style={{fontSize:'25px', color:'white'}}>Dashboard</span>
-                        </div>
-                        <div className='col-3' style={{ minHeight: "200px", background: "pink", margin: "4%", padding:'2%' }}>
-                            <span className='fa fa-phone' style={{fontSize:"100px", color:"white", lineHeight:'2'}}></span><br/>
-                            <span style={{fontSize:'25px', color:'white'}}>Contact_Mgmt</span>
-                        </div>
-                        <div className='col-3' style={{ minHeight: "200px", background: "green", margin: "4%", padding:'2%' }}>
-                            <span className='fa fa-edit' style={{fontSize:"100px", color:"white", lineHeight:'2'}}></span><br/>
-                            <span style={{fontSize:'25px', color:'white'}}>Add_Notes</span>
-                        </div>
+        <div className="dashboard-page">
+            <div className="container-fluid dashboard-container">
+                <div className="row g-4 justify-content-center">
+                    {/* Dashboard */}
+                    <div className="col-12 col-sm-6 col-lg-4">
+                        <Link to="/dashboard" className="dashboard-card dashboard-orange">
+                        <i className="bi bi-house-door-fill"></i>
+                        <span>Dashboard</span>
+                        </Link>
                     </div>
-                    <div className='row'>
-                        <div className='col-3' style={{ minHeight: "200px", background: "blue", margin: "4%", padding:'2%' }}>
-                            <span className='fa fa-pencil' style={{fontSize:"100px", color:"white", lineHeight:'2'}}></span><br/>
-                            <span style={{fontSize:'25px', color:'white'}}>Add_Course</span>
-                        </div>
-                        <div className='col-3' style={{ minHeight: "200px", background: "teal", margin: "4%", padding:'2%' }}>
-                            <span className='fa fa-lock' style={{fontSize:"100px", color:"white", lineHeight:'2'}}></span><br/>
-                            <span style={{fontSize:'25px', color:'white'}}>Change_Password</span>
-                        </div>
-                        <div className='col-3' style={{ minHeight: "200px", background: "purple", margin: "4%", padding:'2%' }}>
-                            <span className='fa fa-sign-out' style={{fontSize:"100px", color:"white", lineHeight:'2'}}></span><br/>
-                            <span style={{fontSize:'25px', color:'white'}}>Logout</span>
-                        </div>
+                    {/* Contact Management */}
+                    <div className="col-12 col-sm-6 col-lg-4">
+                        <Link to="/ContactMgmt" className="dashboard-card dashboard-pink">
+                        <i className="bi bi-telephone-fill"></i>
+                        <span>Contact Management</span>
+                        </Link>
                     </div>
+                    {/* Add Notes */}
+                    <div className="col-12 col-sm-6 col-lg-4">
+                        <Link to="/AddNotes" className="dashboard-card dashboard-blue">
+                        <i className="bi bi-file-earmark-plus-fill"></i>
+                        <span>Add Notes</span>
+                        </Link>
+                    </div>
+                    {/* Add Course */}
+                    <div className="col-12 col-sm-6 col-lg-4">
+                        <Link to="/AddCourse" className="dashboard-card dashboard-green">
+                        <i className="bi bi-journal-plus"></i>
+                        <span>Add Course</span>
+                        </Link>
+                    </div>
+                    {/* Change Password */}
+                    <div className="col-12 col-sm-6 col-lg-4">
+                        <Link to="/ChangePassword" className="dashboard-card dashboard-teal">
+                        <i className="bi bi-key-fill"></i>
+                        <span>Change Password</span>
+                        </Link>
+                    </div>
+                    {/* Logout */}
+                    <div className="col-12 col-sm-6 col-lg-4">
+                        <button type="button" className="dashboard-card dashboard-purple dashboard-logout"
+                        onClick={handleLogout}>
+                        <i className="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </div>
     )
 }
 
-export default Dashboard
+export default Dashboard;

@@ -1,0 +1,91 @@
+.admin-navbar{
+    background: navy;
+    min-height: 64px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 1000;
+}
+.admin-brand{
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.25rem;
+    white-space: nowrap;
+}
+.admin-brand:hover{
+    color: #e0e7ff !important;
+}
+.admin-navbar .nav-link{
+    color: white !important;
+    font-weight: 500;
+    padding: 10px 12px !important;
+    transition: 0.2s ease;
+}
+.admin-navbar .nav-link:hover{
+    color: #dbeafe !important;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+}
+.logout-btn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+/* Mobile menu button */
+.admin-toggler{
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 6px 9px;
+}
+.admin-toggler:focus{
+    box-shadow: none;
+}
+.admin-toggler .navbar-toggler-icon{
+    filter: brightness(0) invert(1);
+}
+
+/* Mobile */
+@media(max-width: 991px){
+    .admin-navbar{
+        min-height: 60px;
+    }
+    .admin-navbar .navbar-collapse{
+        margin-top: 10px;
+        padding: 10px 0 15px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .admin-navbar .navbar-nav{
+        width: 100%;
+    }
+    .admin-navbar .nav-item{
+        width: 100%;
+    }
+    .admin-navbar .nav-link{
+        width: 100%;
+        padding: 12px 10px !important;
+        border-radius: 6px;
+    }
+    .admin-navbar .nav-link:hover{
+        background: rgba(255,255,255,0.12);
+    }
+    .logout-btn{
+        text-align: left;
+    }
+}
+/* Small Phones */
+@media(max-width: 576px){
+    .admin-navbar{
+        min-height: 58px;
+    }
+    .admin-brand{
+        font-size: 1.05rem;
+    }
+    .admin-navbar .container-fluid{
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+    .admin-navbar .nav-link{
+        font-size: 0.95rem;
+        padding: 11px 8px !important;
+    }
+}

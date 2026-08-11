@@ -71,14 +71,20 @@ function AddCourse() {
         <div className="addcourse-page">
             <ToastContainer position="top-right" />
             <div className="addcourse-card">
-                <div className="text-center">
+                {/* Header */}
+                <div className="addcourse-header text-center">
+                    <div className="addcourse-icon">
+                        <i className="bi bi-journal-plus"></i>
+                    </div>
                     <h2>Add Course</h2>
                     <p>Create and publish a new Course</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     {/* Course Name */}
-                    <div className="mb-3">
-                        <label className="form-label fw-bold">Course Name</label>
+                    <div className="mb-4">
+                        <label className="form-label fw-bold">
+                            <i className="bi bi-book me-2 text-primary"></i>
+                            Course Name</label>
                         <input
                             type="text"
                             name="courseName"
@@ -89,8 +95,10 @@ function AddCourse() {
                         />
                     </div>
                     {/* Course Banner */}
-                    <div className="mb-3">
-                        <label className="form-label fw-bold">Course Banner</label>
+                    <div className="mb-4">
+                        <label className="form-label fw-bold">
+                            <i className="bi bi-image me-2 text-primary"></i>
+                            Course Banner</label>
                         <input
                             id="banner"
                             type="file"
@@ -107,14 +115,18 @@ function AddCourse() {
                                 alt="Course banner preview"
                             />
                         ) : (
-                            <span
-                                className="preview-text">Banner Preview will apper here</span>
+                            <div className="preview-placeholder">
+                                <i className="bi bi-image"></i>
+                            <span>Banner Preview will appear here</span>
+                            </div>
                         )}
                     </div>
                     {/* Description */}
                     <div className="mb-4">
                         <label
-                            className="form-label fw-bold">Course Description</label>
+                            className="form-label fw-bold">
+                                <i className="bi bi-text-paragraph me-2 text-primary"></i>
+                                Course Description</label>
                         <textarea
                             name="description"
                             value={formData.description}
@@ -139,7 +151,12 @@ function AddCourse() {
                                         aria-hidden="true"
                                     ></span>
                                     Uploading...
-                                </>) : ("Add Course")}
+                                </>) : (
+                                    <>
+                                    <i className="bi bi-cloud-arrow-up-fill me-2"></i>
+                                    Add Course
+                                    </>
+                                )}
                         </button>
                     </div>
                 </form>

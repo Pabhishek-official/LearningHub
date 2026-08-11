@@ -136,14 +136,17 @@ function CourseMgmt() {
     return (
         <div className="coursemgmt-page">
             <ToastContainer position="top-right" />
-            <div className="container py-5">
+            <div className="container py-4">
                 {/* Header */}
                 <div className="coursemgmt-header">
                     <div>
-                        <h2>Course Management</h2>
+                        <h2>
+                            <i className="bi bi-mortarboard-fill me-2"></i>
+                            Course Management</h2>
                         <p>Manage all courses from all admin panel.</p>
                     </div>
                     <div className="course-count">
+                        <i className="bi bi-book me-2"></i>
                         Total Courses:
                         <strong>{courses.length}</strong>
                     </div>
@@ -159,6 +162,7 @@ function CourseMgmt() {
                 {/* Empty State */}
                 {!loading && courses.length === 0 && (
                     <div className="empty-course">
+                        <i className="bi bi-journal-x"></i>
                         <h4>No Courses Found</h4>
                         <p>You haven't added courses yet.</p>
                     </div>
@@ -186,12 +190,14 @@ function CourseMgmt() {
                                                 className="btn btn-primary"
                                                 type="button"
                                                 onClick={() => handleEdit(course)}>
+                                                    <i className="bi bi-pencil-square me-1"></i>
                                                 Edit
                                             </button>
                                             <button
                                                 className="btn btn-danger"
                                                 type="button"
                                                 onClick={() => handleDelete(course._id)}>
+                                                    <i className="bi bi-trash3 me-1"></i>
                                                 Delete
                                             </button>
                                         </div>
@@ -202,7 +208,7 @@ function CourseMgmt() {
                     </div>
                 )}
             </div>
-
+            {/* Edit Modal */}
             {editingCourse && (
                 <div
                     className="modal fade show d-block"
@@ -211,11 +217,13 @@ function CourseMgmt() {
                         backgroundColor: "rgba(0,0,0,0.5)"
                     }}
                 >
-                    <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div className="modal-content rounded-4">
+                            {/* Modal Header */}
                             <div className="modal-header">
                                 <h5
                                     className="modal-title">
+                                        <i className="bi bi-pencil-square me-2"></i>
                                     Edit Course
                                 </h5>
                                 <button
@@ -227,6 +235,7 @@ function CourseMgmt() {
                                     }}
                                 ></button>
                             </div>
+                            {/* Form */}
                             <form
                                 onSubmit={handleUpdate}>
                                 <div className="modal-body">
@@ -284,6 +293,7 @@ function CourseMgmt() {
                                         ></textarea>
                                     </div>
                                 </div>
+                                {/* Footer */}
                                 <div className="modal-footer">
                                     <button
                                         type="button"
@@ -306,7 +316,12 @@ function CourseMgmt() {
                                                 ></span>
                                                 Updating...
                                             </>
-                                        ) : ("Save Changes")}
+                                        ) : (
+                                            <>
+                                            <i className="bi bi-check-lg me-1"></i>
+                                            Save Changes
+                                            </>
+                                        )}
                                     </button>
                                 </div>
                             </form>

@@ -27,12 +27,12 @@
     margin-bottom: 25px;
 }
 
-.form-control{
+.addcourse-card .form-control{
     border-radius: 12px;
     padding: 12px;
 }
 
-.form-control:focus{
+.addcourse-card .form-control:focus{
     box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .25);
     border-color: #2563eb;
 }
@@ -58,6 +58,8 @@
 
 .preview-text{
     color: #94a3b8;
+    text-align: center;
+    padding: 10px;
 }
 
 .btn-course{
@@ -65,11 +67,61 @@
     padding: 12px;
     font-size: 18px;
     font-weight: 600;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .btn-course:hover{
     transform: translateY(-2px);
+}
+/* Mobile Responsive */
+@media(max-width: 576px){
+    .addcourse-page{
+        min-height: calc(100vh - 60px);
+        padding: 25px 12px;
+        align-items: flex-start;
+    }
+    .addcourse-card{
+        padding: 22px 18px;
+        border-radius: 16px;
+        margin-top: 10px;
+    }
+    .addcourse-card h2{
+        font-size: 25px;
+    }
+    .addcourse-card p{
+        font-size: 14px;
+        padding: 10px;
+    }
+    .addcourse-card .form-control{
+        font-size: 14px;
+        padding: 10px;
+    }
+    .preview-box{
+        height: 180px;
+        border-radius: 12px;
+    }
+    .preview-text{
+        font-size: 13px;
+    }
+    .btn-course{
+        font-size: 16px;
+        padding: 11px;
+    }
+}
+/* Very Small phones */
+@media(max-width: 375px){
+    .addcourse-page{
+        padding: 20px 8px;
+    }
+    .addcourse-card{
+        padding: 18px 14px;
+    }
+    .addcourse-card h2{
+        font-size: 23px;
+    }
+    .preview-box{
+        height: 160px;
+    }
 }
 
 @keyframes fadeIn{
