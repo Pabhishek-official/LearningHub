@@ -1,0 +1,231 @@
+/* Contact management page */
+.contactmgmt-page{
+    min-height: 100vh;
+    padding: 40px 0;
+    background: linear-gradient(135deg, #eef2ff, #dbeafe);
+}
+/* Header */
+.contactmgmt-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+.contactmgmt-header h2{
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.contactmgmt-header p{
+    color: #64748b;
+    margin: 0;
+}
+/* Contact count */
+.contact-count{
+    background: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    white-space: nowrap;
+}
+.contact-count i{
+    color: #2563eb;
+}
+.contact-count strong{
+    margin-left: 6px;
+    color: #1e293b;
+}
+/* Contact Card */
+.contact-card{
+    height: 100%;
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+.contact-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.13);
+}
+/* Contact Icon */
+.contact-icon{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #eef2ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+/* Name */
+.contact-card h4{
+    color: #1e293b;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+/* Contact Information */
+.contact-info{
+    margin-bottom: 18px;
+}
+.contact-info p{
+    margin-bottom: 9px;
+    color: #64748b;
+    word-break: break-word;
+}
+.contact-info i{
+    width: 22px;
+    color: #2563eb;
+}
+/* Message */
+.contact-message{
+    background: #f8fafc;
+    padding: 13px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+.contact-message small{
+    display: block;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.contact-message p{
+    margin: 0;
+    color: #334155;
+    line-height: 1.5;
+    word-break: break-word;
+}
+/* Actions */
+.contact-actions{
+    display: flex;
+    gap: 10px;
+}
+.contact-actions .btn{
+    flex: 1;
+    border-radius: 25px;
+    font-weight: 600;
+}
+.contact-actions .btn-success{
+    background: #22c55e;
+}
+/* Empty state */
+.empty-contacts{
+    background: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+.empty-contacts i{
+    font-size: 55px;
+    color: #94a3b8;
+    display: block;
+    margin-bottom: 15px;
+}
+.empty-contacts h4{
+    color: #1e293b;
+    font-weight: 700;
+}
+.empty-contacts p{
+    color: #64748b
+}
+/* Loading */
+.contact-loading{
+    text-align: center;
+    padding: 70px 20px;
+}
+.contact-loading p{
+    margin-top: 15px;
+    color: #64748b;
+}
+/* Tablet */
+@media(max-width: 768px){
+    .contactmgmt-page{
+        padding: 30px 0;
+    }
+    .contactmgmt-header{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 25px;
+    }
+    .contact-count{
+        align-self: flex-start;
+    }
+    .contact-card{
+        padding: 20px;
+    }
+}
+/* Mobile */
+@media (max-width: 576px){
+    .contactmgmt-page{
+        padding: 20px 10px;
+        overflow: hidden;
+    }
+    .contactmgmt-page .container{
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .contactmgmt-header{
+        text-align: center;
+        align-items: center;
+    }
+    .contactmgmt-header h2{
+        font-size: 25px;
+    }
+    .contactmgmt-header p{
+        font-size: 14px;
+    }
+    .contact-count{
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+    .contact-card{
+        border-radius: 15px;
+        padding: 18px;
+    }
+    .contact-card:hover{
+        transform: none;
+    }
+    .contact-card h4{
+        font-size: 19px;
+    }
+    .contact-info p{
+        font-size: 14px;
+    }
+    .contact-message p{
+        font-size: 14px;
+    }
+    .contact-actions{
+        flex-direction: column;
+    }
+    .contact-actions .btn{
+        width: 100%;
+        font-size: 14px;
+        padding: 9px;
+    }
+    .empty-contacts{
+        padding: 45px 15px;
+    }
+}
+/* Very Small phones */
+@media (max-width: 360px){
+    .contactmgmt-header h2{
+        font-size: 22px;
+    }
+    .contact-card{
+        padding: 15px;
+    }
+    .contact-icon{
+        width: 48px;
+        height: 48px;
+        font-size: 21px;
+    }
+    .contact-actions .btn{
+        font-size: 13px;
+    }
+}
