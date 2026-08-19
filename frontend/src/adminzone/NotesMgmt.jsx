@@ -248,8 +248,8 @@ function NotesMgmt() {
                     }}>
                          <div
                 className="modal-dialog modal-dialog-centered
-                modal-dialog-scrollable">
-                    <div className="modal-content rounded-4">
+                notes-edit-dialog">
+                    <div className="modal-content rounded-4 notes-edit-modal">
                         {/* Modal Header */}
                         <div className="modal-header">
                             <h5 className="modal-title">
@@ -264,7 +264,8 @@ function NotesMgmt() {
                                 setEditPreview(null);
                             }}></button>
                         </div>
-                        <form onSubmit={handleUpdate}>
+                        <form onSubmit={handleUpdate}
+                        className="notes-edit-form">
                             <div className="modal-body">
                                 {/* Topic */}
                                 <div className="mb-3">

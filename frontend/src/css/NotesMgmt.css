@@ -69,6 +69,7 @@
 .notes-actions{
     display: flex;
     gap: 8px;
+    padding: 0 20px 20px;
 }
 .notes-actions button,
 .notes-actions a{
@@ -97,15 +98,76 @@
 .empty-notes p{
     color: #64748b;
 }
-/* Modal */
-.modal-content{
-    border: none;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+/* EDIT NOTES Modal */
+/* Full screen modal background */
+.notesmgmt-page .modal.show{
+    overflow-y: auto !important;
+    padding: 0 !important;
 }
-.modal-title{
+/* Modal dialog */
+.notes-edit-dialog{
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+/* modal itself */
+.notes-edit-modal{
+    border: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    /* Important for mobile */
+    max-height: calc(100vh - 40px);
+    max-height: calc(100dvh - 40px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+/* modal header */
+.notes-edit-modal .modal-header{
+    flex-shrink: 0;
+    padding: 18px 22px;
+    border-bottom: 1px solid #e5e7eb;
+}
+.notes-edit-modal .modal-title{
     font-weight: 700;
     color: #1e293b;
 }
+/* form takes available height */
+.notes-edit-form{
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+}
+/* Modal body scrolls */
+.notes-edit-modal .modal-body{
+    padding: 22px;
+    overflow-y: auto;
+    min-height: 0;
+    flex: 1;
+}
+/* Better scrollbar */
+.notes-edit-modal .modal-body::-webkit-scrollbar{
+    width: 6px;
+}
+.notes-edit-modal .modal-body::-webkit-scrollbar-thumb{
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+.notes-edit-modal .modal-body::-webkit-scrollbar-track{
+    background: transparent;
+}
+/* Form controls */
+.notes-edit-modal .form-control{
+    width: 100%;
+    max-width: 100%;
+}
+/* File input */
+.notes-edit-modal input[type="file"]{
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+/* Image preview */
 .edit-preview{
     width: 100%;
     height: 200px;
@@ -118,39 +180,40 @@
     height: 100%;
     object-fit: cover;
 }
+/* Long PDF filename */
+.notes-edit-modal small{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+/* Modal footer */
+.notes-edit-modal .modal-footer{
+    flex-shrink: 0;
+    padding: 15px 22px;
+    border-top: 1px solid #e5e7eb;
+    background: white;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.notes-edit-modal .modal-footer button{
+    margin-bottom: 0;
+}
 
 /* Tablet */
 @media(max-width: 768px){
     .notesmgmt-page{
-        padding: 30px 0;
-    }
-    .notesmgmt-page h2{
-        font-size: 28px;
-        margin-bottom: 30px !important;
-    }
-    .notesmgmt-page .card-img-top{
-        height: 200px;
-    }
-    .notesmgmt-page .card-body{
-        padding: 18px;
-    }
-    .notesmgmt-page .modal-dialog{
-        margin: 15px auto;
-    }
-}
-/* Mobile */
-@media(max-width: 768px){
-    .notesmgmt-page{
-        padding: 20px 0px;
+        padding: 20px 0;
     }
     .notesmgmt-header{
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 25px;
-
     }
     .notesmgmt-header h2{
         font-size: 25px;
+    }
+    .notesmgmt-header p{
+        font-size: 14px;
     }
     .notes-count{
         width: 100%;
@@ -165,39 +228,130 @@
     .notes-content h4{
         font-size: 19px;
     }
-    /* Card */
+    /* Card buttons */
     .notes-actions{
         flex-direction: column;
+        padding: 0 18px 18px;
     }
     .notes-actions button,
     .notes-actions a{
         width: 100%;
         padding: 10px;
     }
-    .modal-dialog{
-        margin: 10px;
+    /* Mobile modal */
+    .notes-edit-dialog{
+        width: calc(100% - 20px);
+        max-width: none;
+        margin: 10px auto;
     }
-    .modal-body{
+    .notes-edit-modal{
+        max-height: calc(100vh - 20px);
+        max-height: calc(100dvh - 20px);
+        border-radius: 18px !important;
+    }
+    .notes-edit-modal .modal-header{
+        padding: 16px 18px;
+    }
+    .notes-edit-modal .modal-title{
+        font-size: 22px;
+    }
+    .notes-edit-modal .modal-body{
         padding: 18px;
     }
-    .modal-footer{
-        flex-direction: column-reverse;
+    .notes-edit-modal .modal-footer{
+        padding: 12px 18px;
         gap: 8px;
+        flex-direction: column-reverse;
+        flex-shrink: 0;
     }
-    .modal-footer button{
+    .notes-edit-modal .modal-footer button{
         width: 100%;
+        margin: 0;
+    }
+    .edit-preview{
+        height: 190px;
+    }
+}
+/*Small Mobile */
+@media(max-width: 480px){
+    .notesmgmt-page{
+        padding: 15px 0px;
+    }
+    .notesmgmt-header h2{
+        font-size: 23px;
+    }
+    .notes-count{
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    .notes-image{
+        height: 190px;
+    }
+    .notes-content h4{
+        font-size: 18px;
+    }
+    /* modal */
+    .notes-edit-dialog{
+        width: calc(100% - 12px);
+        margin: 6px auto;
+    }
+    .notes-edit-modal{
+        max-height: calc(100vh - 12px);
+        max-height: calc(100dvh - 12px);
+        border-radius: 16px !important;
+    }
+    .notes-edit-modal .modal-header{
+        padding: 14px 16px;
+    }
+    .notes-edit-modal .modal-title{
+        font-size: 20px;
+    }
+    .notes-edit-modal .modal-body{
+        padding: 16px;
+    }
+    .notes-edit-modal .modal-footer{
+        padding: 10px 16px;
+    }
+    .edit-preview{
+        height: 170px;
+    }
+    .notes-edit-modal .form-label{
+        font-size: 15px;
+    }
+    .notes-edit-modal .form-control{
+        font-size: 15px;
     }
 }
 
 /* Very small phones */
 @media(max-width: 360px){
-    .notes-header h2{
-        font-size: 22px;
+    .notesmgmt-header h2{
+        font-size: 21px;
     }
     .notes-image{
         height: 180px;
     }
     .notes-content h4{
-        font-size: 18px;
+        font-size: 17px;
+    }
+    .notes-edit-dialog{
+        width: calc(100% - 8px);
+        margin: 4px auto;
+    }
+    .notes-edit-modal{
+        max-height: calc(100vh - 8px);
+        max-height: calc(100dvh - 8px);
+    }
+    .notes-edit-modal .modal-header{
+        padding: 12px 14px;
+    }
+    .notes-edit-modal .modal-body{
+        padding: 14px;
+    }
+    .notes-edit-modal .modal-footer{
+        padding: 8px 14px;
+    }
+    .edit-preview{
+        height: 150px;
     }
 }
