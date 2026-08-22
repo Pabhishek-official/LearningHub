@@ -150,7 +150,6 @@
     }
     .course-content p{
         font-size: 14px;
-        min-height: auto;
     }
     .course-actions{
         gap: 8px;
