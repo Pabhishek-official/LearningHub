@@ -79,7 +79,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
-    -webkit-box-orient: verical;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
@@ -165,18 +165,26 @@
     /* Edit modal */
     .modal-dialog{
         margin: 10px;
+        max-width: calc(100% - 20px);
+        height: calc(100% - 20px);
     }
     .modal-content{
         border-radius: 16px !important;
+        max-height: 100%;
     }
     .modal-body{
         padding: 18px;
+        overflow-y: auto;
     }
     .modal-footer{
         padding: 12px;
         gap: 8px;
+        flex-shrink: 0;
+        display: flex;
+        flex-wrap: wrap;
     }
     .modal-footer button{
         flex: 1;
+        min-width: 120px;
     }
 }

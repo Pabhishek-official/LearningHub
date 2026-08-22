@@ -292,9 +292,8 @@ function CourseMgmt() {
                                             onChange={handleEditChange}
                                         ></textarea>
                                     </div>
-                                </div>
-                                {/* Footer */}
-                                <div className="modal-footer">
+                                    {/* Footer */}
+                                    <div className="modal-footer">
                                     <button
                                         type="button"
                                         className="btn btn-secondary"
@@ -323,6 +322,7 @@ function CourseMgmt() {
                                             </>
                                         )}
                                     </button>
+                                </div>
                                 </div>
                             </form>
                         </div>
