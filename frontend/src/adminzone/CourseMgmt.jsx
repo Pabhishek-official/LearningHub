@@ -190,14 +190,14 @@ function CourseMgmt() {
                                                 className="btn btn-primary"
                                                 type="button"
                                                 onClick={() => handleEdit(course)}>
-                                                    <i className="bi bi-pencil-square me-1"></i>
+                                                <i className="bi bi-pencil-square me-1"></i>
                                                 Edit
                                             </button>
                                             <button
                                                 className="btn btn-danger"
                                                 type="button"
                                                 onClick={() => handleDelete(course._id)}>
-                                                    <i className="bi bi-trash3 me-1"></i>
+                                                <i className="bi bi-trash3 me-1"></i>
                                                 Delete
                                             </button>
                                         </div>
@@ -217,13 +217,13 @@ function CourseMgmt() {
                         backgroundColor: "rgba(0,0,0,0.5)"
                     }}
                 >
-                    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div className="modal-content rounded-4">
+                    <div className="modal-dialog course-edit-dialog">
+                        <div className="modal-content course-edit-modal">
                             {/* Modal Header */}
                             <div className="modal-header">
                                 <h5
                                     className="modal-title">
-                                        <i className="bi bi-pencil-square me-2"></i>
+                                    <i className="bi bi-pencil-square me-2"></i>
                                     Edit Course
                                 </h5>
                                 <button
@@ -237,7 +237,9 @@ function CourseMgmt() {
                             </div>
                             {/* Form */}
                             <form
-                                onSubmit={handleUpdate}>
+                                onSubmit={handleUpdate}
+                                className="course-edit-form">
+                                    {/* modal body */}
                                 <div className="modal-body">
                                     {/* Course Name */}
                                     <div className="mb-3">
@@ -292,8 +294,9 @@ function CourseMgmt() {
                                             onChange={handleEditChange}
                                         ></textarea>
                                     </div>
-                                    {/* Footer */}
-                                    <div className="modal-footer mb-3">
+                                </div>
+                                {/* modal Footer */}
+                                <div className="modal-footer">
                                     <button
                                         type="button"
                                         className="btn btn-secondary"
@@ -317,12 +320,11 @@ function CourseMgmt() {
                                             </>
                                         ) : (
                                             <>
-                                            <i className="bi bi-check-lg me-1"></i>
-                                            Save Changes
+                                                <i className="bi bi-check-lg me-1"></i>
+                                                Save Changes
                                             </>
                                         )}
                                     </button>
-                                </div>
                                 </div>
                             </form>
                         </div>
