@@ -293,7 +293,7 @@ function CourseMgmt() {
                                         ></textarea>
                                     </div>
                                     {/* Footer */}
-                                    <div className="modal-footer">
+                                    <div className="modal-footer mb-3">
                                     <button
                                         type="button"
                                         className="btn btn-secondary"
