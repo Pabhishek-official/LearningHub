@@ -78,6 +78,7 @@
     /* Prevent very long description from making cards uneven */
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: verical;
     overflow: hidden;
 }
